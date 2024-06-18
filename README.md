@@ -7,6 +7,7 @@ O objetivo desse trabalho foi desenvolver um sistema em Java para gestão de loj
 Irei explicar como alguns metodos principais funcionando...
 
 ===== CLASSE DATA =====
+
 Irei começar falando primeiro sobre a Classe data, que tem o objetivo de implementar uma classe para representar e validar datas.
 O construtor inicia os atributos do dia, mes e ano. Depois ele verifica se é uma data valida
 caso a data seja invalida ele define para a data padrão que foi solicitado no desafio 01/01/2000.
@@ -21,8 +22,8 @@ O método estático, verifica se um ano é bissexto se ele for divisivel por 4, 
 
 
 ==== CLASSE PRODUTO =====
-Agora vamos falar sobre a classe Produto, o objetivo desta classe é gerenciar informações e operações relacionadas a produtos, incluindo verificação de validade.
 
+Agora vamos falar sobre a classe Produto, o objetivo desta classe é gerenciar informações e operações relacionadas a produtos, incluindo verificação de validade.
 O método principal desta classe é "estaVencido" que verifica se o produto está vencido em relacão à uma data fornecida, ele compara o ano, mês e dia da "dataValidade" com a "dataAtual", retornando true se o produto estiver vencido, false caso contrario.
 
 ===== CLASSE LOJA =====
