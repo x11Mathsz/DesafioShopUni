@@ -4,7 +4,7 @@ Olá, meu nome é Matheus Christopher Viegas de Faveri, e esse é o meu trabalho
 
 O objetivo desse trabalho foi desenvolver um sistema em Java para gestão de lojas dentro de um shopping center.
 
-Irei explicar como alguns metodos principais funcionando...
+Irei explicar como alguns metodos principais funcionam...
 
 ===== CLASSE DATA =====
 
