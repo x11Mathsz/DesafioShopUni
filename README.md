@@ -49,7 +49,9 @@ Método removeProduto, remove um produto pelo nome do array "estoqueProdutos", d
 
 O método toString retorna uma representação textual da loja, incluindi nome, quantidade de funcionarios, salario base, endereço, data de fundão e estoque de produtos, proporcionando um visão completa da loja.
 
-===CLASSE SHOPPING
+===== CLASSE SHOPPING =====
+
+
 Classe shopping, tem o ojetivo de gerenciar um shopping, suas lojas e funcionalidades relaciondas, endereço é um objeto "Endereço" contendo informações do endereço do shopping, lojas é um Array de objetos "Loja" representando as lojas do shopping.
 
 O construtor recebe nome do shopping, endereço e a quantidade máxima de lojas que o shopping pode ter.
