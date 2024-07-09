@@ -39,17 +39,16 @@ public class MetodosMenu2ponto0 {
         int deci;
 
         do {
-            deci = solicitarInt("\n\n\n\n-------------------------------------" +
+            System.out.println("\n\n\n\n-------------------------------------" +
                     "\n ==== Sistema do Shopping " + shopping.getNome()+ " ====" +
                     "\n===== Menu de controle de Lojas =====" +
-                    "\n-------------------------------------" +
-                    "\n(1) Registrar loja. " +
+                    "\n-------------------------------------");
+            deci = solicitarInt("(1) Registrar loja. " +
                     "\n(2) Remover loja. " +
                     "\n(3) Ver lojas registradas. " +
-                    "\n(4) Atualizar loja" +
-                    "\n(5) Quantidade de lojas por tipo. " +
-                    "\n(6) Produtos. " +
-                    "\n(7) Loja de informática com maior seguro." +
+                    "\n(4) Quantidade de lojas por tipo. " +
+                    "\n(5) Produtos. " +
+                    "\n(6) Loja de informática com maior seguro." +
                     "\n(0) Sair. \n--> ");
 
             switch (deci){
@@ -63,15 +62,12 @@ public class MetodosMenu2ponto0 {
                     lerLojas(shopping);
                     break;
                 case 4:
-                    attLoja(shopping);
-                    break;
-                case 5:
                     quantidadeTipos(shopping);
                     break;
-                case 6:
+                case 5:
                     produtosLoja(shopping);
                     break;
-                case 7:
+                case 6:
                     lojasInformaticaSeguro(shopping);
                     break;
                 case 0:
@@ -238,7 +234,7 @@ public class MetodosMenu2ponto0 {
 
         System.out.println("\n\n\n\n------------------------------------------" +
                 "\nQuantidade de lojas registradas: " + quantidade);
-        System.out.println("Nomes das lojas \n------------------------------------------");
+        System.out.println("Nomes das lojas");
         for (String nome : nomesLojas){
             Loja loja = shopping.buscarLoja(nome);
             if (loja!= null){
@@ -249,11 +245,7 @@ public class MetodosMenu2ponto0 {
                     }
                 }
                 System.out.println("Nome da loja: " + nome + " - Quantidade de produtos: "+quantidadeProdutos +
-                        "\nSalário base: " + loja.getSalarioBaseFuncionario() +
-                        "\nGastos com sálario: " + loja.gastosComSalario()+
-                        "\nEndereço " + loja.getEndereco().getNomeDaRua() + ", " + loja.getEndereco().getCidade() +
-                        ", " + loja.getEndereco().getEstado() + ", " + loja.getEndereco().getPais() +
-                        ", " + loja.getEndereco().getCep() + ", " + loja.getEndereco().getNumero() +
+                         "\nGastos com salário: " + loja.gastosComSalario() +
                         "\n------------------------------------------");
             }
         }
@@ -280,7 +272,7 @@ public class MetodosMenu2ponto0 {
 
             if (dataValidade != null){
                 Produto produto = new Produto(nomeP, precoP, dataValidade);
-                Data dataReferencia = new Data(20, 10, 2023); //Data solicitada no desafio
+                Data dataReferencia = new Data(20, 10, 2023);
 
                 if (dataValidade.compareTo(dataReferencia) < 0 ){
                     System.out.println("Produto vencido! Não foi possivel adicionar");
@@ -440,245 +432,5 @@ public class MetodosMenu2ponto0 {
             }
         }
     }
-
-    public void attLoja(Shopping shopping){
-        System.out.println("\n\n\nAtualização Loja");
-        int deci;
-
-        do {
-            deci = solicitarInt("Digite a opção desejada. \n(1) Atualizar dados da loja. " +
-                    "\n(2) Atualizar tipo da loja (*ATUALMENTE NÃO ESTA FUNCIONANDO*). \n(3) Voltar para o menu. \n--> ");
-            switch (deci){
-                case 1:
-                    atualizarLoja(shopping, sc);
-                    break;
-                case 2:
-                    atualizarTipoDaLoja(shopping, sc);
-                    break;
-                case 3:
-                    System.out.println("Vontando para o menu");
-                    break;
-                default:
-                    System.out.println("Opção ínválida");
-            }
-
-        } while (deci != 3);
-    }
-
-    public void atualizarLoja(Shopping shopping, Scanner sc) {
-        System.out.print("\n\n\n\nAtualizar Loja \nDigite o nome da loja que deseja atualizar," +
-                "caso tenha digitado errado, digite 'cancelar' \n--> ");
-        String nomeLoja = sc.nextLine();
-
-        if (nomeLoja.equalsIgnoreCase("cancelar")){
-            System.out.println("Cancelado, voltando para o menu...");
-        } else {
-            Loja loja = shopping.buscarLoja(nomeLoja);
-
-            if (loja == null) {
-                System.out.println("Loja não encontrada.");
-                return;
-            }
-
-            System.out.println("Atualizando informações da loja " + loja.getNome());
-
-            System.out.print("Nome da loja (atual: " + loja.getNome() + ")\n--> ");
-            String novoNome = sc.nextLine();
-            if (novoNome.equalsIgnoreCase("cancelar")) {
-                System.out.println("Operação cancelada.");
-                return;
-            }
-            if (!novoNome.isEmpty()) {
-                loja.setNome(novoNome);
-            }
-
-            int novaQuantidadeFuncionarios = solicitarInt("Quantidade de funcionários (atual: " +
-                    loja.getQuantidadeFuncionarios() + ")\n--> ");
-            if (novaQuantidadeFuncionarios != -1) {
-                loja.setQuantidadeFuncionarios(novaQuantidadeFuncionarios);
-            }
-
-            double novoSalarioBase = solicitarDouble("Salário base dos funcionários (atual: " +
-                    loja.getSalarioBaseFuncionario() + ")\n--> ");
-            if (novoSalarioBase != -1) {
-                loja.setSalarioBaseFuncionario(novoSalarioBase);
-            }
-
-            System.out.print("Nome da rua (atual: " + loja.getEndereco().getNomeDaRua() + ")\n--> ");
-            String novaRua = sc.nextLine();
-            /*if (novaRua.equalsIgnoreCase("cancelar")) {
-                System.out.println("Operação cancelada.");
-                return;
-            }*/
-            if (!novaRua.isEmpty()) {
-                loja.getEndereco().setNomeDaRua(novaRua);
-            }
-
-            System.out.print("Cidade (atual: " + loja.getEndereco().getCidade() + ") \n--> ");
-            String novaCidade = sc.nextLine();
-            if (!novaCidade.isEmpty()) {
-                loja.getEndereco().setCidade(novaCidade);
-            }
-
-            System.out.print("Estado (atual: " + loja.getEndereco().getEstado() + ") \n--> ");
-            String novoEstado = sc.nextLine();
-            if (!novoEstado.isEmpty()) {
-                loja.getEndereco().setEstado(novoEstado);
-            }
-
-            System.out.print("País (atual: " + loja.getEndereco().getPais() + ") \n--> ");
-            String novoPais = sc.nextLine();
-            if (!novoPais.isEmpty()) {
-                loja.getEndereco().setPais(novoPais);
-            }
-
-            System.out.print("CEP (atual: " + loja.getEndereco().getCep() + ") \n--> ");
-            String novoCep = sc.nextLine();
-            if (!novoCep.isEmpty()) {
-                loja.getEndereco().setCep(novoCep);
-            }
-
-            System.out.print("Número (atual: " + loja.getEndereco().getNumero() + ") \n--> ");
-            String novoNumero = sc.nextLine();
-            if (!novoNumero.isEmpty()) {
-                loja.getEndereco().setNumero(novoNumero);
-            }
-
-            System.out.print("Complemento (atual: " + loja.getEndereco().getComplemento() + ") \n--> ");
-            String novoComplemento = sc.nextLine();
-            if (!novoComplemento.isEmpty()) {
-                loja.getEndereco().setComplemento(novoComplemento);
-            }
-
-
-
-
-            int novaQuantidadeMaxProdutos = solicitarInt("Quantidade máxima de produtos (atual: "
-                    + loja.getMaxProdutos() + ")\n--> ");
-            if (novaQuantidadeMaxProdutos != -1) {
-                loja.setMaxProdutos(novaQuantidadeMaxProdutos);
-            }
-
-            System.out.println("Informações da loja " + loja.getNome() + " atualizadas com sucesso.");
-        }
-
-    }
-    public void atualizarTipoDaLoja(Shopping shopping, Scanner sc){
-        System.out.print("\n\n\n\nAtualizar Tipo da Loja \nDigite o nome da loja que deseja atualizar," +
-                "caso tenha digitado errado, digite 'cancelar' \n--> ");
-        String nomeLoja = sc.nextLine();
-
-        if (nomeLoja.equalsIgnoreCase("cancelar")) {
-            System.out.println("Operação cancelada.");
-            return;
-        }
-
-        Loja loja = shopping.buscarLoja(nomeLoja);
-
-        if (loja == null) {
-            System.out.println("Loja não encontrada.");
-            return;
-        }
-
-        int tipoLoja = solicitarInt("Digite o tipo da loja. \n(1) Cosmético \n(2) Vestuário " +
-                "\n(3) Bijuteria \n(4) Alimentação \n(5) Informática \n(6) Cancelar \n--> ");
-
-        switch (tipoLoja) {
-            case 1:
-                // Atualiza a loja como Cosmético
-                if (!(loja instanceof Cosmetico)) {
-                    System.out.println("Convertendo para Loja de Cosmético...");
-                    loja = new Cosmetico(loja.getNome(), loja.getQuantidadeFuncionarios(),
-                            loja.getSalarioBaseFuncionario(), loja.getEndereco(), loja.getDataFundacao(),
-                            0.0, loja.getMaxProdutos());
-                }
-                Cosmetico cosmetico = (Cosmetico) loja;
-                System.out.println("Loja Cosmético");
-                double novaTaxaComercializacao = solicitarDouble("Taxa de comercialização (atual: " +
-                        cosmetico.getTaxaComercializacao() + ")\n--> ");
-                if (novaTaxaComercializacao != -1) {
-                    cosmetico.setTaxaComercializacao(novaTaxaComercializacao);
-                }
-                break;
-            case 2:
-                // Atualiza a loja como Vestuário
-                if (!(loja instanceof Vestuario)) {
-                    System.out.println("Convertendo para Loja de Vestuário...");
-                    loja = new Vestuario(loja.getNome(), loja.getQuantidadeFuncionarios(),
-                            loja.getSalarioBaseFuncionario(), loja.getEndereco(), loja.getDataFundacao(),
-                            false, loja.getMaxProdutos());
-                }
-                Vestuario vestuario = (Vestuario) loja;
-                System.out.println("Loja Vestuário");
-                boolean novoImportado = solicitarSimOuNao(sc, "A loja possui algum produto importado? (atual: " +
-                        (vestuario.getProdutosImportados() ? "sim" : "não") + ")\n--> ");
-                vestuario.setProdutosImportados(novoImportado);
-                break;
-            case 3:
-                // Atualiza a loja como Bijuteria
-                if (!(loja instanceof Bijuteria)) {
-                    System.out.println("Convertendo para Loja de Bijuteria...");
-                    loja = new Bijuteria(loja.getNome(), loja.getQuantidadeFuncionarios(),
-                            loja.getSalarioBaseFuncionario(), loja.getEndereco(), loja.getDataFundacao(),
-                            0.0, loja.getMaxProdutos());
-                }
-                Bijuteria bijuteria = (Bijuteria) loja;
-                System.out.println("Loja Bijuteria");
-                double novaMetaVendas = solicitarDouble("Meta de vendas (atual: " +
-                        bijuteria.getMetaVendas() + ")\n--> ");
-                if (novaMetaVendas != -1) {
-                    bijuteria.setMetaVendas(novaMetaVendas);
-                }
-                break;
-            case 4:
-                // Atualiza a loja como Alimentação
-                if (!(loja instanceof Alimentacao)) {
-                    System.out.println("Convertendo para Loja de Alimentação...");
-                    System.out.println("Informe a data do alvará.");
-                    Data novaDataAlvara = lerDataValida(sc, "alvará");
-                    loja = new Alimentacao(loja.getNome(), loja.getQuantidadeFuncionarios(),
-                            loja.getSalarioBaseFuncionario(), loja.getEndereco(), loja.getDataFundacao(),
-                            novaDataAlvara, loja.getMaxProdutos());
-                }
-                Alimentacao alimentacao = (Alimentacao) loja;
-                System.out.println("Loja Alimentação");
-                System.out.println("Informe a nova data do alvará.");
-                Data novaDataAlvaraAtualizada = lerDataValida(sc, "alvará");
-                if (novaDataAlvaraAtualizada != null) {
-                    alimentacao.setDataAlvara(novaDataAlvaraAtualizada);
-                }
-                break;
-            case 5:
-                // Atualiza a loja como Informática
-                if (!(loja instanceof Informatica)) {
-                    System.out.println("Convertendo para Loja de Informática...");
-                    loja = new Informatica(loja.getNome(), loja.getQuantidadeFuncionarios(),
-                            loja.getSalarioBaseFuncionario(), loja.getEndereco(), loja.getDataFundacao(),
-                            0.0, loja.getMaxProdutos());
-                }
-                Informatica informatica = (Informatica) loja;
-                System.out.println("Loja Informática");
-                double novoSeguro = solicitarDouble("Valor do seguro (atual: " +
-                        informatica.getSeguroEletronicos() + ")\n--> ");
-                if (novoSeguro != -1) {
-                    informatica.setSeguroEletronicos(novoSeguro);
-                }
-                break;
-            case 6:
-                System.out.println("Operação cancelada.");
-                return;
-            default:
-                System.out.println("Tipo de loja desconhecido.");
-                return;
-        }
-
-        System.out.println("Tipo da loja atualizado com sucesso para " + loja.getNome());
-    }
-
-
-
-
-
-
 
 }
