@@ -1,4 +1,5 @@
 ===== DESAFIO SHOP =====
+
 Durante o semestre, aprenderemos diversas funcionalidades e aspectos da programação. Como desafio final da disciplina, você deverá implementar um sistema que utilizará todos os conteúdos que abordaremos durante as semanas.
 
 Neste contexto, para o desafio de Laboratório I você deverá desenvolver um...
