@@ -1,4 +1,28 @@
 ===== DESAFIO SHOP =====
+Durante o semestre, aprenderemos diversas funcionalidades e aspectos da programação. Como desafio final da disciplina, você deverá implementar um sistema que utilizará todos os conteúdos que abordaremos durante as semanas.
+
+Neste contexto, para o desafio de Laboratório I você deverá desenvolver um...
+Gerenciador de Lojas de um Shopping Center
+
+![8cb1923d-2df8-4b9c-80d1-21da5e277bdf](https://github.com/x11Mathsz/DesafioShopUni/assets/166771138/aa5b65e7-80d0-474e-a54e-b9e017da16cc)
+
+Um dos locais mais visitados nos finais de semana, especialmente em época de festas, são os Shoppings. Além de climatizados e comumente seguros, são locais onde é possível encontrar uma grande variedade de lojas e atividades para todas as idades.
+
+Neste contexto, o desafio de Laboratório I será o desenvolvimento de um gerenciador de lojas em um Shopping Center.
+
+Um Shopping pode ter diversas lojas de diferentes segmentos (vestuário, alimentação, lazer, cinema, serviços etc.). A imagem abaixo ilustra a estrutura de um Shopping para a finalidade do sistema a ser desenvolvido.
+
+
+Cada "quadrado" representa um determinado espaço no Shopping, que poderá (ou não) ser alugado por alguma loja. No exemplo acima, temos um Shopping com 20 espaços para locação, nomeados de E0 a E20.
+
+Desta forma, você deverá implementar um sistema que gerencie as lojas presentes no shopping, bem como alterações nas lojas, emissões de relatórios e diversos outros aspectos referentes ao assunto.
+
+
+
+
+
+
+===== APRESENTAÇÃO =====
 
 Olá, meu nome é Matheus Christopher Viegas de Faveri, e esse é o meu trabalho de Lab 1 do curso de ADS da Universidade do Vale do Rio dos Sinos.
 
